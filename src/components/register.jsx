@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button, Modal, Dialog } from "@material-ui/core";
+import { Input, Button, Dialog } from "@material-ui/core";
 
 class Register extends Component {
   state = {
@@ -19,8 +19,10 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    //Add Request Later
-    this.handleClose();
+    this.state.password === this.state.confirmPass ? (
+        //Add Post Data
+        this.handleClose()
+        ):(console.log("%cPasswords Do not Match Buddy!","color:red;font-size:48px"))
   };
 handleClose = () => {
     this.setState(prev => ({
