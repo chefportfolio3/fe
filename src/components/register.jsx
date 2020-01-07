@@ -22,12 +22,12 @@ class Register extends Component {
     //Add Request Later
     this.handleClose();
   };
-handleClose = () => {
+  handleClose = () => {
     this.setState(prev => ({
-        ...prev,
-        open:false
+      ...prev,
+      open: false
     }))
-}
+  }
   render() {
     return (
       <>
@@ -78,10 +78,13 @@ handleClose = () => {
             </Button>
           </form>
         </Dialog>
-        <Button onClick={()=> this.setState(prev => ({
+        <Button onClick={() => this.setState(prev => ({
             ...prev,
-            open:true
-        }))}>Show Modal</Button>
+            open: true
+          })
+        )}>
+          Show Modal
+        </Button>
       </>
     );
   }
