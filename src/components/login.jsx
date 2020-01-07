@@ -26,32 +26,32 @@ const Login = () => {
     }
 
     return (
-        <>
-            <Dialog open={modal} onClose={handleClose}>
-                <form onSubmit={handleSubmit}>
-                    <Input
-                        name='username'
-                        placeholder='Username'
-                        value={user.username}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Input
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                        value={user.password}
-                        onChange={handleChange}
-                        required
-                    />
-                    <Button color='primary' variant='contained' type='submit'>
-                        Login
-                </Button>
-                </form>
-            </Dialog>
-            <Button onClick={() => setModal(true)}>Show Login</Button>
-        </>
-    )
+      <>
+        <Dialog open={modal} onClose={handleClose}>
+          <form onSubmit={handleSubmit} className="FormLogin">
+            <Input
+              name="username"
+              placeholder="Username"
+              value={user.username}
+              onChange={handleChange}
+              required
+            />
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={user.password}
+              onChange={handleChange}
+              required
+            />
+            <Button color="primary" variant="contained" type="submit">
+              Login
+            </Button>
+          </form>
+        </Dialog>
+        <Button onClick={() => setModal(true)}>Show Login</Button>
+      </>
+    );
 }
 
 export default Login;

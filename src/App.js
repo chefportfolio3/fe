@@ -1,14 +1,14 @@
-import React from 'react';
-import './App.css';
-import Login from './components/login';
-import Register from './components/register';
-
+import React from "react";
+import Login from "./components/login";
+import Register from "./components/register";
+import './styles/index.css'
+import { Container } from "@material-ui/core";
 function App() {
   return (
-    <div className="App">
-      <Login />
+    <Container className='App' maxWidth='lg'>
+      <Login/>
       <Register/>
-    </div>
+    </Container>
   );
 }
 
