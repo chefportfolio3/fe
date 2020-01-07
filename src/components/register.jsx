@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button, Dialog } from "@material-ui/core";
+import { Input, Button, Dialog,Typography as Font } from "@material-ui/core";
 const axios  = require('axios')
 
 class Register extends Component {
@@ -55,8 +55,15 @@ class Register extends Component {
   render() {
     return (
       <>
-        <Dialog open={this.state.open} onClose={this.handleClose}>
-          <form onSubmit={here => this.handleSubmit(here)} className='FormRegister'>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          className="FormRegister"
+        >
+          <Font variant="h3" align="center">
+            Register Today!
+          </Font>
+          <form onSubmit={here => this.handleSubmit(here)}>
             <Input
               name="username"
               value={this.state.username}
@@ -89,11 +96,14 @@ class Register extends Component {
               type="text"
               required
             />
-            <Input required />
-            name="number" value={this.state.number}
-            placeholder="Phone Number" onChange=
-            {here => this.handleChange(here)}
-            type="tel" required />
+            <Input
+              required
+              name="number"
+              value={this.state.number}
+              placeholder="Phone Number"
+              onChange={here => this.handleChange(here)}
+              type="tel"
+            />
             <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>
