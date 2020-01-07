@@ -1,0 +1,16 @@
+.FormLogin {
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 2rem;
+                div{
+                    margin: 1rem;
+                }
+                button{
+                    margin: 1rem;
+                }
+    } 
+    h3 {
+        margin-top: 2rem;
+    }
+}

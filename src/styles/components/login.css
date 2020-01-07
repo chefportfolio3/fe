@@ -1,0 +1,23 @@
+.FormLogin form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1rem 2rem;
+}
+
+.FormLogin form div {
+  margin: 1rem;
+}
+
+.FormLogin form button {
+  margin: 1rem;
+}
+
+.FormLogin h3 {
+  margin-top: 2rem;
+}
+/*# sourceMappingURL=login.css.map */

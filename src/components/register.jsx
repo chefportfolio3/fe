@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Input, Button, Modal, Dialog } from "@material-ui/core";
+import { Input, Button, Dialog } from "@material-ui/core";
+const axios  = require('axios')
 
 class Register extends Component {
   state = {
@@ -10,6 +11,7 @@ class Register extends Component {
     number: "",
     open: false
   };
+
   handleChange = ({ target: { name, value } }) => {
     this.setState(prev => ({
       ...prev,
@@ -17,22 +19,43 @@ class Register extends Component {
     }));
   };
 
+  getToken = async credintials => {
+    const res = await axios.post('/route',{...credintials})
+    const token = res.data.token
+    window.localStorage.setItem("bwToken",token)
+  }
+  
   handleSubmit = e => {
     e.preventDefault();
-    //Add Request Later
-    this.handleClose();
+    const credintials = {
+      username: this.state.username,
+      password: this.state.password,
+      location: this.state.location,
+      number : this.state.number,
+    };
+    if (this.state.password === this.state.confirmPass) {
+      this.handleClose()
+      this.getToken(credintials)
+    } else {
+      console.log(
+        "%cPasswords Do not Match Buddy!",
+        "color:red;font-size:48px"
+      );
+      alert("Passwords Do not Match Buddy!");
+    }
   };
   handleClose = () => {
     this.setState(prev => ({
       ...prev,
       open: false
-    }))
-  }
+    }));
+  };
+
   render() {
     return (
       <>
         <Dialog open={this.state.open} onClose={this.handleClose}>
-          <form onSubmit={here => this.handleSubmit(here)}>
+          <form onSubmit={here => this.handleSubmit(here)} className='FormRegister'>
             <Input
               name="username"
               value={this.state.username}
@@ -65,24 +88,24 @@ class Register extends Component {
               type="text"
               required
             />
-            <Input
-              name="number"
-              value={this.state.number}
-              placeholder="Phone Number"
-              onChange={here => this.handleChange(here)}
-              type="number"
-              required
-            />
+            <Input required />
+            name="number" value={this.state.number}
+            placeholder="Phone Number" onChange=
+            {here => this.handleChange(here)}
+            type="tel" required />
             <Button color="primary" variant="contained" type="submit">
               Submit
             </Button>
           </form>
         </Dialog>
-        <Button onClick={() => this.setState(prev => ({
-            ...prev,
-            open: true
-          })
-        )}>
+        <Button
+          onClick={() =>
+            this.setState(prev => ({
+              ...prev,
+              open: true
+            }))
+          }
+        >
           Show Modal
         </Button>
       </>
