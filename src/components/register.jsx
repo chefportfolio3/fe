@@ -45,7 +45,6 @@ class Register extends Component {
       alert("Passwords Do not Match Buddy!");
     }
   };
-
   handleClose = () => {
     this.setState(prev => ({
       ...prev,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Button, Dialog } from '@material-ui/core';
+import { Input, Button, Dialog, Typography as Font } from '@material-ui/core';
 
 const Login = () => {
     const [user, setUser] = useState({
@@ -27,8 +27,9 @@ const Login = () => {
 
     return (
       <>
-        <Dialog open={modal} onClose={handleClose}>
-          <form onSubmit={handleSubmit} className="FormLogin">
+        <Dialog open={modal} onClose={handleClose} className="FormLogin">
+          <Font variant='h3' align='center'>Login Now!</Font>
+          <form onSubmit={handleSubmit}>
             <Input
               name="username"
               placeholder="Username"
