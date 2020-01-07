@@ -36,6 +36,7 @@ class Register extends Component {
     if (this.state.password === this.state.confirmPass) {
       this.handleClose()
       this.getToken(credintials)
+      this.props.setToken(window.localStorage.getItem("bwToken"))
     } else {
       console.log(
         "%cPasswords Do not Match Buddy!",
