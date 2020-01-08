@@ -14,7 +14,7 @@ function App() {
         path="/"
         render={props => (
           <>
-            <Login token={token} />
+            <Login setToken={setToken} />
             <Register setToken={setToken} props={props} />
           </>
         )}
