@@ -20,23 +20,26 @@ class Register extends Component {
   };
 
   getToken = async credintials => {
-    const res = await axios.post('/route',{...credintials})
-    const token = res.data.token
+    await axios.post('/api/auth/register',{...credintials})
+    const login = await axios.post('/api/auth/login',{...credintials})
+    const token = login.data.token
     window.localStorage.setItem("bwToken",token)
   }
   
-  handleSubmit = e => {
+  handleSubmit = async e => {
+    const history = this.props.props.history;
     e.preventDefault();
     const credintials = {
       username: this.state.username,
       password: this.state.password,
       location: this.state.location,
-      number : this.state.number,
+      contact : this.state.number,
     };
     if (this.state.password === this.state.confirmPass) {
       this.handleClose()
-      this.getToken(credintials)
+      await this.getToken(credintials)
       this.props.setToken(window.localStorage.getItem("bwToken"))
+      history.push('/profile')
     } else {
       console.log(
         "%cPasswords Do not Match Buddy!",
