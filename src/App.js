@@ -7,7 +7,7 @@ function App() {
   const [token,setToken] = useState(window.localStorage.getItem('bwToken'))
   return (
     <Container className='App' maxWidth='lg'>
-      <Login token={token}/>
+      <Login setToken={setToken}/>
       <Register setToken={setToken}/>
     </Container>
   );
