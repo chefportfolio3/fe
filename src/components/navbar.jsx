@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@material-ui/core';
 import Login from './login'
 import Register from './register'
 import Post from './post'

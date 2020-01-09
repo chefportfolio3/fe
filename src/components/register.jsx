@@ -20,8 +20,14 @@ class Register extends Component {
   };
 
   getToken = async credintials => {
-    await axios.post('/api/auth/register',{...credintials})
-    const login = await axios.post('/api/auth/login',{...credintials})
+    await axios.post(
+      "https://mychefportfolio.herokuapp.com/api/auth/register",
+      { ...credintials }
+    );
+    const login = await axios.post(
+      "https://mychefportfolio.herokuapp.com/api/auth/login",
+      { ...credintials }
+    );
     const token = login.data.token
     window.localStorage.setItem("bwToken",token)
   }

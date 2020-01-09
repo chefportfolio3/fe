@@ -14,9 +14,12 @@ function Profile({ token,setToken }) {
   }, []);
 
   const getUser = async () => {
-    const res = await axios("/api/auth/users", {
-      headers: { authorization: token }
-    });
+    const res = await axios(
+      "https://mychefportfolio.herokuapp.com/api/auth/users",
+      {
+        headers: { authorization: token }
+      }
+    );
 
     setUser(
       res.data.users.find(user => {

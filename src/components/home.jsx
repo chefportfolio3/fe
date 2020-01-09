@@ -10,13 +10,18 @@ const Home = ({recipes,setRecipes}) => {
         fetchRecipe()
     }, [])
     const fetchRecipe = async () => {
-        const res = await axios.get("/api/recipes")
+        const res = await axios.get(
+          "https://mychefportfolio.herokuapp.com/api/recipes"
+        );
         setRecipes(res.data);
     }
 
     const deleteRecipe = recipe => {
-        axios.delete(`/api/recipes/${recipe.id}`)
-            .then(fetchRecipe())
+        axios
+          .delete(
+            `https://mychefportfolio.herokuapp.com/api/recipes/${recipe.id}`
+          )
+          .then(fetchRecipe());
     }
     
     return (

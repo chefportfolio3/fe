@@ -14,9 +14,10 @@ const EditItem = ({fetchRecipe}) => {
     })
     console.log(recipe)
     useEffect(() => {
-        axios.get(`/api/recipes/${id}`)
-            // .then(res => console.log(res))
-            .then(res => setRecipe(res.data))
+        axios
+          .get(`https://mychefportfolio.herokuapp.com/api/recipes/${id}`)
+          // .then(res => console.log(res))
+          .then(res => setRecipe(res.data));
     }, [])
     const handleChange = e => {
         setRecipe({
@@ -30,7 +31,10 @@ const EditItem = ({fetchRecipe}) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`/api/recipes/${id}`, recipe)
+        axios.put(
+          `https://mychefportfolio.herokuapp.com/api/recipes/${id}`,
+          recipe
+        );
         history.push('/')
     }
     
