@@ -8,6 +8,7 @@ import Profile from './components/profile'
 import Home from "./components/home";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/navbar";
+import EditItem from "./components/editItem,";
 function App() {
   const [token, setToken] = useState(window.localStorage.getItem('bwToken'))
   return (
@@ -25,6 +26,7 @@ function App() {
           )}
         />
         <Route exact path='/' component={Home} />
+        <Route path='/edit/:id' component={EditItem}/>
         <PrivateRoute path='/profile' component={Profile} setToken={setToken} token={token} />
       </Container>
     </>

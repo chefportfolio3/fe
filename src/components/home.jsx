@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
-import { Paper, Typography as Font } from '@material-ui/core';
+import { Paper, Typography as Font, Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
     const [recipes, setRecipes] = useState([])
 
+    const history = useHistory();
     useEffect(() => {
         axios.get('/api/recipes')
             .then(res => setRecipes(res.data))
@@ -29,23 +31,26 @@ const Home = () => {
                         </Font>
                         <Font variant='h6'>
                             Recipe Info:
-                </Font>
+                        </Font>
                         <Font variant='body1' component='p'>
                             {recipe.recipe_info}
                         </Font>
                         <Font variant='h6'>
                             Instructions:
-                </Font>
+                        </Font>
                         <Font variant='body1' component='p'>
                             {recipe.instructions}
                         </Font>
                         <Font variant='h6'>
                             Ingredients:
-                </Font>
+                        </Font>
                         <Font variant='body1' component='p'>
                             {recipe.ingredients}
                         </Font>
                     </div>
+                    <Button onClick={() => {
+                        history.push(`/edit/${recipe.id}`)
+                    }}>Edit Item</Button>
                 </Paper>)}
         </div>
     )
