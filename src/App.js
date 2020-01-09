@@ -8,6 +8,7 @@ import Profile from './components/profile'
 import Home from "./components/home";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/navbar";
+import Post from "./components/post";
 function App() {
   const [token, setToken] = useState(window.localStorage.getItem('bwToken'))
   return (
@@ -21,6 +22,7 @@ function App() {
             <>
               <Login setToken={setToken} />
               <Register setToken={setToken} props={props} />
+              <Post/>
             </>
           )}
         />
