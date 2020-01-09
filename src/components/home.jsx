@@ -13,6 +13,12 @@ const Home = ({recipes,setRecipes}) => {
         const res = await axios.get("/api/recipes")
         setRecipes(res.data);
     }
+
+    const deleteRecipe = recipe => {
+        axios.delete(`/api/recipes/${recipe.id}`)
+            .then(fetchRecipe())
+    }
+    
     return (
         <div>
             {recipes.map(recipe =>
@@ -50,6 +56,9 @@ const Home = ({recipes,setRecipes}) => {
                     <Button onClick={() => {
                         history.push(`/edit/${recipe.id}`)
                     }}>Edit Item</Button>
+                    <Button onClick={() => {
+                        deleteRecipe(recipe);
+                    }}>Delete Recipe</Button>
                 </Paper>)}
         </div>
     )
