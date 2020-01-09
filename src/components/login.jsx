@@ -66,7 +66,7 @@ const Login = props => {
             </Button>
         </form>
       </Dialog>
-      <Button onClick={() => setModal(true)}>Show Login</Button>
+      <Button onClick={() => setModal(true)}>Login</Button>
     </>
   );
 }

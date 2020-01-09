@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dialog, Typography as Font, Input, Button } from "@material-ui/core";
 import axios from "axios";
-function Post() {
+function Post({setRecipes}) {
   const [recipe, setRecipe] = useState({
     chef_name: "",
     recipe_title: "",
@@ -12,7 +12,7 @@ function Post() {
     instructions: "",
     user_id: ""
   });
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     setRecipe({
@@ -20,21 +20,36 @@ function Post() {
       [name]: value
     });
   };
-
+const getRecipe = async () => {
+    const res = await axios("/api/recipes")
+    setRecipes(res.data)
+}
   const handleSubmit = e => {
     e.preventDefault();
     sendRecipe();
+    getRecipe();
+    setRecipe({
+      chef_name: "",
+      recipe_title: "",
+      recipe_info: "",
+      recipe_photo: "",
+      meal_type: "",
+      ingredients: "",
+      instructions: "",
+      user_id: ""
+    });
+    setOpen(false)
   };
 
   const sendRecipe = async () => {
     const res = await axios.post("/api/recipes", recipe);
-    console.log(res);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
   return (
+      <>
     <Dialog open={open} onClose={handleClose} className="PostForm">
       <form onSubmit={handleSubmit}>
         <Font variant="h1">New Recipe</Font>
@@ -91,6 +106,10 @@ function Post() {
         </Button>
       </form>
     </Dialog>
+    <Button onClick={()=> setOpen(true)}>
+        New Recipe
+    </Button>
+    </>
   );
 }
 
