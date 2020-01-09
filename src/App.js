@@ -5,6 +5,8 @@ import './styles/index.css'
 import { Container } from "@material-ui/core";
 import { Route } from "react-router-dom";
 import Profile from './components/profile'
+import Home from "./components/home";
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
   const [token,setToken] = useState(window.localStorage.getItem('bwToken'))
   return (
@@ -19,7 +21,8 @@ function App() {
           </>
         )}
       />
-      <Route path='/profile' component={Profile}/>
+      <Route exact path='/' component={Home} />
+      <PrivateRoute path='/profile' component={Profile}/>
     </Container>
   );
 }

@@ -43,4 +43,12 @@
 .FormLogin h3 {
   margin-top: 2rem;
 }
+
+.homePage {
+  margin: 25px 0;
+}
+
+.homePage .homeContainer {
+  padding: 25px;
+}
 /*# sourceMappingURL=index.css.map */
