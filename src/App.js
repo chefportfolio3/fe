@@ -22,7 +22,7 @@ function App() {
         )}
       />
       <Route exact path='/' component={Home} />
-      <PrivateRoute path='/profile' component={Profile}/>
+      <PrivateRoute path='/profile' component={Profile} setToken={setToken} token={token}/>
     </Container>
   );
 }

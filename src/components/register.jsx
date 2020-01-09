@@ -39,6 +39,7 @@ class Register extends Component {
       this.handleClose()
       await this.getToken(credintials)
       this.props.setToken(window.localStorage.getItem("bwToken"))
+      window.localStorage.setItem("user",credintials.username);
       history.push('/profile')
     } else {
       console.log(
