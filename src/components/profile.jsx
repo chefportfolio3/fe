@@ -7,8 +7,8 @@ import {
   Button
 } from "@material-ui/core";
 
-function Profile({ token }) {
-  const [user, setUser] = useState("");
+function Profile({ token,setToken }) {
+  const [user, setUser] = useState({});
   useEffect(() => {
     getUser();
   }, []);
@@ -26,12 +26,12 @@ function Profile({ token }) {
   };
 
   const logout = () => {
+    setToken('')
     window.localStorage.removeItem("bwToken");
     window.localStorage.removeItem("user");
   };
 
   const { username, location, contact } = user;
-
   return (
     <Paper elevation={5} className="ProfileRoot">
       <Button onClick={logout}>Log Out</Button>

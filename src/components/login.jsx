@@ -28,13 +28,13 @@ const Login = props => {
         
         const user = res.data.message.split(' ')
         window.localStorage.setItem("user",user[user.length-1])
+        history.push('/profile')
       })
     setUser({
       username: '',
       password: ''
     })
     handleClose();
-    history.push('/profile')
   }
 
   const handleClose = () => {
