@@ -5,7 +5,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-const EditItem = () => {
+const EditItem = ({fetchRecipe}) => {
     const [recipe, setRecipe] = useState({
         recipe_title: '',
         recipe_info: '',
@@ -39,27 +39,31 @@ const EditItem = () => {
             <Paper elevation={5} className="FormLogin">
             <Font variant='h3' align='center'>Editing {recipe.recipe_title}</Font>
                 <form onSubmit={handleSubmit}>
+                    <Font variant='h4'>Title: </Font>
                     <Input
                         name="recipe_title"
                         value={recipe.recipe_title}
                         onChange={handleChange}
                         required
                     />
+                    <Font variant='h4'>Recipe Info: </Font>
                     <Input
                         name="recipe_info"
                         value={recipe.recipe_info}
                         onChange={handleChange}
                         required
                     />
-                    <Input
-                        name="ingredients"
-                        value={recipe.ingredients}
-                        onChange={handleChange}
-                        required
-                    />
+                    <Font variant='h4'>Instructions: </Font>
                     <Input
                         name="instructions"
                         value={recipe.instructions}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Font variant='h4'>Ingredients: </Font>
+                    <Input
+                        name="ingredients"
+                        value={recipe.ingredients}
                         onChange={handleChange}
                         required
                     />
