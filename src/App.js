@@ -8,29 +8,15 @@ import Profile from './components/profile'
 import Home from "./components/home";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/navbar";
-<<<<<<< HEAD
-import Post from "./components/post";
-=======
 import EditItem from "./components/editItem,";
->>>>>>> e914606b9daf63a622206bf66498c9151fedc0a8
 function App() {
   const [token, setToken] = useState(window.localStorage.getItem('bwToken'))
+  const [recipes, setRecipes] = useState([]);
   return (
     <>
-      <Navbar />
+      <Navbar setToken = {setToken} setRecipes={setRecipes}/>
       <Container className="App" maxWidth="lg">
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <>
-              <Login setToken={setToken} />
-              <Register setToken={setToken} props={props} />
-              <Post/>
-            </>
-          )}
-        />
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' render={() => <Home recipes={recipes} setRecipes={setRecipes}/>} />
         <Route path='/edit/:id' component={EditItem}/>
         <PrivateRoute path='/profile' component={Profile} setToken={setToken} token={token} />
       </Container>

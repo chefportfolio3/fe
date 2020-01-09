@@ -121,7 +121,7 @@ class Register extends Component {
             }))
           }
         >
-          Show Modal
+          Register
         </Button>
       </>
     );
