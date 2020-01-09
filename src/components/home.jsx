@@ -9,11 +9,14 @@ const Home = () => {
 
     const history = useHistory();
     useEffect(() => {
-        axios.get('/api/recipes')
-            .then(res => setRecipes(res.data))
-
+        fetchRecipe()
     }, [])
 
+    const fetchRecipe = async () => {
+        const res = await axios.get("/api/recipes")
+        setRecipes(res.data);
+    }
+    
     return (
         <div>
             {recipes.map(recipe =>
