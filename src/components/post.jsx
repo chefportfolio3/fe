@@ -21,7 +21,9 @@ function Post({setRecipes}) {
     });
   };
 const getRecipe = async () => {
-    const res = await axios("/api/recipes")
+    const res = await axios(
+      "https://mychefportfolio.herokuapp.com/api/recipes"
+    );
     setRecipes(res.data)
 }
   const handleSubmit = e => {
@@ -42,7 +44,10 @@ const getRecipe = async () => {
   };
 
   const sendRecipe = async () => {
-    const res = await axios.post("/api/recipes", recipe);
+    await axios.post(
+      "https://mychefportfolio.herokuapp.com/api/recipes",
+      recipe
+    );
   };
 
   const handleClose = () => {
