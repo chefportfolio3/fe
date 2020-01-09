@@ -23,9 +23,12 @@ const Login = props => {
     // request here
     axios.post('https://mychefportfolio.herokuapp.com/api/auth/login', user)
       .then(res => {
-        localStorage.setItem('bwToken', res.data.token)
+        window.localStorage.setItem('bwToken', res.data.token)
+        props.setToken(window.localStorage.getItem("bwToken"))
+        
+        const user = res.data.message.split(' ')
+        window.localStorage.setItem("user",user[user.length-1])
       })
-    props.setToken(localStorage.getItem('bwToken'))
     setUser({
       username: '',
       password: ''

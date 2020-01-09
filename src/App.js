@@ -19,7 +19,7 @@ function App() {
           </>
         )}
       />
-      <Route path='/profile' component={Profile}/>
+      <Route path='/profile' render={()=>(<Profile token={token}/>)}/>
     </Container>
   );
 }
